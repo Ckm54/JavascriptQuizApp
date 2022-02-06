@@ -34,23 +34,23 @@ const quizData = [
 
 ];
 
-const quiz = document.getElementById('quiz');
-const answer = document.querySelectorAll('.answer');
-const questionEl = document.getElementById('question');
-const a_text = document.getElementById('a_text');
-const b_text = document.getElementById('b_text');
-const c_text = document.getElementById('c_text');
-const d_text = document.getElementById('d_text');
-const e_text = document.getElementById('e_text');
-const submitBtn = document.getElementById('submit');
+const quiz = document.getElementById('quiz')
+const answerEls = document.querySelectorAll('.answer')
+const questionEl = document.getElementById('question')
+const a_text = document.getElementById('a_text')
+const b_text = document.getElementById('b_text')
+const c_text = document.getElementById('c_text')
+const d_text = document.getElementById('d_text')
+const e_text = document.getElementById('e_text')
+const submitBtn = document.getElementById('submit')
 
-let currentQuiz = 0;
-let score = 0;
+let currentQuiz = 0
+let score = 0
 
-loadQuiz();
+loadQuiz()
 
 function loadQuiz() {
-    deselectAnswers();
+    deselectAnswers()
 
     const currentQuizData = quizData[currentQuiz]
 
@@ -64,20 +64,20 @@ function loadQuiz() {
 }
 
 function deselectAnswers() {
-    answer.forEach(answerEl => answerEl.checked = false)
+    answerEls.forEach(answerEl => answerEl.checked = false)
 }
 
 function getSelected() {
     let answer
 
-    answer.forEach(answerEl => {
+    answerEls.forEach(answerEl => {
         if(answerEl.checked) {
             answer = answerEl.id
         }
     })
 
     return answer
-};
+}
 
 submitBtn.addEventListener('click', () => {
     const answer = getSelected()
@@ -87,11 +87,11 @@ submitBtn.addEventListener('click', () => {
             score++
         }
 
-        currentQuiz++;
+        currentQuiz++
 
         if(currentQuiz < quizData.length) {
-            loadQuiz();
-        }else {
+            loadQuiz()
+        } else {
             quiz.innerHTML = `
                 <h2>You answered ${score}/${quizData.length} questions correctly</h2>
 
@@ -99,5 +99,4 @@ submitBtn.addEventListener('click', () => {
             `
         }
     }
-});
-
+})
